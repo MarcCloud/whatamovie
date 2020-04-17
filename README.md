@@ -1,13 +1,15 @@
-# MARTA Bus Transit Viewer for Atlanta
+# Whatamovie TMDB Viewer
 
 
 ## Description
-This is a honework project to demostrate the use of the JAM stack.
-
-You can see the app running by following this (https://save-marta.now.sh/)[link]
+This is a homework project to demostrate the use of the JAM stack.
 
 
 ## To Develop
+
+- Create an API token for the TMDB service.
+- Create local `.env` and `.env.build` files and add `MOVIES_API_TOKEN` to them;
+
 
 `npm install`
 `npm run dev`
