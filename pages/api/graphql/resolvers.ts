@@ -20,7 +20,15 @@ const resolvers = {
       return [];
     },
     searchMovies: (_: any, { page, title }: { page: number; title: string }) => {
-      return [];
+      const encodedTitle = encodeURIComponent(title);
+      return request(`/search/movie?query=${encodedTitle}&page=${page}`)
+        .then((data) => {
+          return data.results.map(mapToMovie);
+        })
+        .catch((error) => {
+          console.error(error);
+          return [];
+        });
     }
   }
 };
