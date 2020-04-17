@@ -1,0 +1,10 @@
+{
+	"build": {
+		"env": {
+			"MOVIES_API_TOKEN": "@movies-api-token"
+		}
+	},
+	"env": {
+		"MOVIES_API_TOKEN": "@movies-api-token"
+	}
+}
