@@ -40,7 +40,7 @@ const CastList: React.FC<CastListProps> = ({ actors }) => {
   return (
     <Box className={classes.root}>
       <GridList className={classes.gridList} cols={1} spacing={1}>
-        {actors.map((actor) => (
+        {actors?.map((actor) => (
           <GridListTile key={actor.id}>
             <img
               className={classes.tileImg}

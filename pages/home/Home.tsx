@@ -1,4 +1,5 @@
 import React from 'react';
+import gql from 'graphql-tag';
 import { NextPage } from 'next';
 import { useQuery, useLazyQuery } from '@apollo/react-hooks';
 import Container from '@material-ui/core/Container';
@@ -9,9 +10,30 @@ import Box from '@material-ui/core/Box';
 import { withApollo } from '../../lib/withApollo';
 import SearchBox from '../../components/SearchBox';
 import MovieList from '../../components/MovieList';
-import { POPULAR_MOVIES, SEARCH_MOVIE_TITLE } from './queries';
 import ShellTileList from '../../components/ShellTileList';
 
+
+export const POPULAR_MOVIES = gql`
+  query GetPopular($page: Int!) {
+    popularMovies(page: $page) {
+      id
+      title
+      backdropPath
+      posterPath
+    }
+  }
+`;
+
+export const SEARCH_MOVIE_TITLE = gql`
+  query SearchByTitle($title: String!, $page: Int!) {
+    searchMovies(title: $title, page: $page) {
+      id
+      title
+      backdropPath
+      posterPath
+    }
+  }
+`;
 
 
 const useStyles = makeStyles((theme: Theme) =>

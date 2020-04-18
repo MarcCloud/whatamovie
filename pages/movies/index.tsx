@@ -1,4 +1,5 @@
 import React from 'react';
+import gql from 'graphql-tag';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import Link from 'next/link'
@@ -12,11 +13,36 @@ import Typography  from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import { withApollo } from '../../lib/withApollo';
-import { MOVIE_WITH_RELATED_MOVIES } from './queries';
 import { Movie } from '../../types';
 
 import CastList from './CastList';
 import MovieList from '../../components/MovieList';
+
+export const MOVIE_WITH_RELATED_MOVIES = gql`
+  fragment MovieBasic on Movie {
+    id
+    title
+    backdropPath
+    posterPath
+  }
+
+  query GetMovieWithSimilarMovies($movieId: Int!) {
+    movie(id: $movieId) {
+      ...MovieBasic
+      overview
+      runtime
+      releaseDate
+      cast {
+        name
+        character
+        profile_path
+      }
+    }
+    relatedMovies(movieId: $movieId, page: 1) {
+      ...MovieBasic
+    }
+  }
+`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
