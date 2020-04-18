@@ -64,7 +64,7 @@ const Home: NextPage<{}> = () => {
       
       <Grid container direction="column" spacing={2} justify="center">
         <Grid item container md={4}>
-          <SearchBox placeholder="Search movies by title" label="Search Movie" onSearch={handleSearch} />
+          <SearchBox placeholder="Search movies by title" label="Search Movie" onSearch={handleSearch}/>
         </Grid>
         <Grid item>
           <Box marginY={2} textAlign="left">

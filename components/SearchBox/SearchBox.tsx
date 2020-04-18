@@ -36,11 +36,16 @@ const SearchBox: React.FC<SearchBoxProps> = ({ label, placeholder, onSearch }) =
     setSearchTerm
   ] = useState('');
   return (
-    <Paper component="form" className={classes.root}>
+    <Paper component="form" className={classes.root} onSubmit={(e) => e.preventDefault()}>
       <InputBase
         className={classes.input}
         placeholder={placeholder}
         inputProps={{ 'aria-label': `search box ${label}` }}
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            onSearch(searchTerm);
+          }
+        }}
         onChange={(e) => {
           setSearchTerm(e.target.value as string);
         }}
