@@ -5,7 +5,12 @@ export default function mapToMovie(apiResult: any) {
     posterPath: apiResult.poster_path,
     backdropPath: apiResult.backdrop_path,
     adult: apiResult.adult,
-    title: apiResult.title
+    title: apiResult.title,
+    runtime: apiResult.runtime,
+    overview: apiResult.overview,
+    cast: apiResult.credits?.cast || [],
+    productionCompanies: apiResult.productionCompanies,
+    releaseDate: apiResult.release_date
   };
 
   return movie;

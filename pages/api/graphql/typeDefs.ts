@@ -16,6 +16,7 @@ const typeDefs = gql`
     productionCompanies: [ProductionCompany!]!
     runtime: Int!
     cast: [Actor!]
+    releaseDate: String!
   }
 
   type ProductionCompany {
@@ -33,7 +34,7 @@ const typeDefs = gql`
     id: Int!
     name: String!
     gender: String
-    profilePath: String
+    profile_path: String
     character: String!
   }
 

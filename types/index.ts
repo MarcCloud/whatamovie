@@ -13,6 +13,7 @@ export type Movie = {
   productionCompanies?: ProductionCompany[];
   runtime?: number;
   cast?: Actor[];
+  releaseDate: string;
 };
 
 export type ProductionCompany = {
@@ -21,15 +22,15 @@ export type ProductionCompany = {
   originCountry: string;
 };
 
-type Genre = {
+export type Genre = {
   id: number;
   name: string;
 };
 
-type Actor = {
+export type Actor = {
   id: number;
   name: string;
   gender: string;
-  profilePath: string;
+  profile_path: string;
   character: string;
 };

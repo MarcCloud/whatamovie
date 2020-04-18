@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Movie } from '../../types';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -8,7 +8,6 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import Box from '@material-ui/core/Box';
-import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,9 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-const MovieList: React.FC<MovieListProps> = ({ movies, onMovieClick }) => {
+const MovieList: React.FC<MovieListProps> = ({ movies }) => {
   const classes = useStyles();
-
+  const router = useRouter();
   return (
     <Box className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList} cols={3}>
@@ -43,7 +42,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies, onMovieClick }) => {
             className={classes.gridTile}
             key={movie.id}
             onClick={() => {
-              onMovieClick(movie.id);
+              router.push(`/movies?movie=${movie.id}`);
             }}
           >
             <img src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} alt={movie.title} />
@@ -64,7 +63,5 @@ const MovieList: React.FC<MovieListProps> = ({ movies, onMovieClick }) => {
 
 interface MovieListProps {
   movies: Movie[];
-  onPageChange?: (newPage: number) => void;
-  onMovieClick: (movieId: number) => void;
 }
 export default MovieList;
