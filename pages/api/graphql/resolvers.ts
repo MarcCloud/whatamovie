@@ -5,7 +5,6 @@ const resolvers = {
     movie: (_: any, { id }: { id: number }) => {
       return request(`movie/${id}?append_to_response=genres,credits`)
         .then((movie) => {
-          console.log(movie);
           return mapToMovie(movie);
         })
         .catch((error) => {

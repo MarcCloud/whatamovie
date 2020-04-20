@@ -63,8 +63,15 @@ const Home: NextPage<{}> = () => {
     <Container maxWidth="lg" className={classes.root}>
       
       <Grid container direction="column" spacing={2} justify="center">
-        <Grid item container md={4}>
-          <SearchBox placeholder="Search movies by title" label="Search Movie" onSearch={handleSearch}/>
+        <Grid item container direction="row" justify="space-between" alignItems="center">
+          <Grid item className={classes.heading}>
+            <Typography variant="h2" color="inherit">
+              Whatamovie
+            </Typography>
+          </Grid>
+          <Grid item>
+            <SearchBox placeholder="Search movies by title" label="Search Movie" onSearch={handleSearch}/>
+          </Grid>
         </Grid>
         <Grid item>
           <Box marginY={2} textAlign="left">

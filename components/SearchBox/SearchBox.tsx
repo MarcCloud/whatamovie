@@ -42,7 +42,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ label, placeholder, onSearch }) =
         placeholder={placeholder}
         inputProps={{ 'aria-label': `search box ${label}` }}
         onKeyUp={(e) => {
-          if (e.keyCode === 13) {
+          if (e.keyCode === 13 && searchTerm) {
             onSearch(searchTerm);
           }
         }}
@@ -53,9 +53,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({ label, placeholder, onSearch }) =
       <IconButton
         type="button"
         className={classes.iconButton}
-        aria-label="search"
+        aria-label={label}
         onClick={() => {
-          onSearch(searchTerm);
+          searchTerm && onSearch(searchTerm);
         }}
       >
         <SearchIcon />
