@@ -9,7 +9,13 @@ This is a homework project to demostrate the use of the JAM stack.
 
 - Create an API token for the TMDB service.
 - Create local `.env` and `.env.build` files and add `MOVIES_API_TOKEN` to them;
+- run `npm install`
+- run `npm run dev`
 
+## Tests
 
-`npm install`
-`npm run dev`
+`npm test`
+
+## Live Demo
+
+https://whatamovie.now.sh/
